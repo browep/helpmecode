@@ -2,7 +2,8 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>HelpmeCo.de | <%= title || 'Welcome' %> </title>
+    <title>HelpmeCo.de | <%= content_for?(:title) ? yield(:title) : "" %></title>
+
     <meta name="description" content="">
     <meta name="author" content="">
 
