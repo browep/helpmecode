@@ -82,6 +82,7 @@ class SitesController < ApplicationController
   end
 
   def about
+    #flash[:error] = "this is a test error msg"
 
   end
 
