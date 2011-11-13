@@ -41,6 +41,13 @@
         <li class="<%= set_active? 'about' %>"><%= link_to 'About', about_sites_url %></li>
         <li class="<%= set_active? 'contact' %>"><%= link_to 'Contact', contact_sites_url %></li>
       </ul>
+      <ul class="nav secondary-nav">
+        <% if logged_in? then %>
+            <li><%= link_to "Welcome, #{current_user.username}",user_path(current_user) %> </li>
+        <% else %>
+            <li><%= link_to 'Login / Register', login_path %></li>
+        <% end %>
+      </ul>
 
 
     </div>

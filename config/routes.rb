@@ -5,7 +5,7 @@ Helpmecode::Application.routes.draw do
 
   match 'logout' => 'sessions#destroy', :as => :logout
 
-  match 'login' => 'sessions#new', :as => :login
+  match 'login' => 'users#new', :as => :login
 
   resources :sessions
 

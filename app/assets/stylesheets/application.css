@@ -9,3 +9,7 @@
 .span-one-half {
   width: 450px;
 }
+
+.right-of-divider {
+    border-left: #EEE 1px solid
+}
