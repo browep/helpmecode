@@ -1,4 +1,7 @@
 class TutorialsController < ApplicationController
+
+  before_filter :login_required, :only=>[:new,:create]
+
   # GET /tutorials
   # GET /tutorials.json
   def index
@@ -41,6 +44,8 @@ class TutorialsController < ApplicationController
   # POST /tutorials.json
   def create
     @tutorial = Tutorial.new(params[:tutorial])
+
+    @tutorial.user = current_user
 
     respond_to do |format|
       if @tutorial.save
