@@ -1,4 +1,6 @@
 Helpmecode::Application.routes.draw do
+  resources :tutorials
+
   resources :sites do
     collection do
       get 'about','contact'
