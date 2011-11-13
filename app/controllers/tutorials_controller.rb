@@ -1,6 +1,7 @@
 class TutorialsController < ApplicationController
 
   before_filter :login_required, :only=>[:new,:create]
+  before_filter :is_owner, :only=>[:edit]
 
   # GET /tutorials
   # GET /tutorials.json
@@ -83,6 +84,14 @@ class TutorialsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to tutorials_url }
       format.json { head :ok }
+    end
+  end
+
+  private
+  def is_owner
+    tutorial = Tutorial.find(params[:id])
+    if !logged_in? || tutorial.user != current_user
+      redirect_to root_path, :notice => "You must be the owner of that tutorial to edit it."
     end
   end
 end
