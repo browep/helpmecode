@@ -4,6 +4,8 @@ class SitesController < ApplicationController
   def index
     @sites = Site.all
 
+    @title = 'Welcome to HelpMeCo.de'
+
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @sites }
@@ -79,5 +81,9 @@ class SitesController < ApplicationController
       format.html { redirect_to sites_url }
       format.json { head :ok }
     end
+  end
+
+  def about
+
   end
 end

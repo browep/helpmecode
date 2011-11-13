@@ -1,21 +1,29 @@
-<h1>Listing sites</h1>
+<!-- Main hero unit for a primary marketing message or call to action -->
+<div class="hero-unit">
+  <h1>HelpMeCo.de</h1>
 
-<table>
-  <tr>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+  <p>The place for the professionals to teach others how to improve their coding skills.</p>
 
-<% @sites.each do |site| %>
-  <tr>
-    <td><%= link_to 'Show', site %></td>
-    <td><%= link_to 'Edit', edit_site_path(site) %></td>
-    <td><%= link_to 'Destroy', site, confirm: 'Are you sure?', method: :delete %></td>
-  </tr>
-<% end %>
-</table>
+  <p><a class="btn primary large">Learn more &raquo;</a></p>
+</div>
 
-<br />
+<!-- Example row of columns -->
+<div class="row">
+  <div class="span-one-half">
+    <h2>Learn</h2>
 
-<%= link_to 'New Site', new_site_path %>
+    <p>Find tutorials from those who have done it before.  Tutorials are tagged with their area ( Java, Ruby on Rails, .NET, CSS, iOs, etc. ).  Search through the tutorials or browse by tag.</p>
+
+    <p><a class="btn" href="#">View details &raquo;</a></p>
+  </div>
+  <div class="span-one-half">
+    <h2>Teach and Earn</h2>
+
+    <p>Have something to share?  HelpMeCo.de gives you a blogging platform geared towards technical type posts.  Share your latest component, a neat project, an installation tutorial, etc.  HelpMeCo.de also profit-shares with content creators.</p>
+
+    <p><a class="btn" href="#">View details &raquo;</a></p>
+  </div>
+
+</div>
+
+

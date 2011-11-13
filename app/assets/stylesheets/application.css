@@ -5,3 +5,7 @@
  *= require_self
  *= require_tree . 
 */
+
+.span-one-half {
+  width: 450px;
+}
