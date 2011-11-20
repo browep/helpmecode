@@ -1,7 +1,7 @@
 class TutorialsController < ApplicationController
 
   before_filter :login_required, :only=>[:new,:create]
-  before_filter :is_owner, :only=>[:edit]
+  before_filter :is_owner, :only=>[:edit,:destroy]
 
   # GET /tutorials
   # GET /tutorials.json

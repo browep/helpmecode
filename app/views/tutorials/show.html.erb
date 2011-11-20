@@ -1,5 +1,27 @@
-<p id="notice"><%= notice %></p>
+<%= container_class 'container-fluid' %>
+<div class="container-fluid">
+  <div class="sidebar">
+    <div class="well">
+      <%= render :partial=>"users/sidebar",:locals=>{:user=>@tutorial.user} %>
+    </div>
+  </div>
+  <div class="content">
 
 
-<%= link_to 'Edit', edit_tutorial_path(@tutorial) %> |
-<%= link_to 'Back', tutorials_path %>
+    <!-- Example row of columns -->
+    <div class="row">
+      <div class="span16">
+        <h2><%= @tutorial.title %></h2>
+
+        <div>
+          <%= @tutorial.content %>
+        </div>
+
+      </div>
+
+
+    </div>
+  </div>
+
+</div>
+

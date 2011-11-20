@@ -40,7 +40,7 @@
 
 <div class="topbar">
   <div class="fill">
-    <div class="container">
+    <div class="<%= content_for?(:container_class) ? yield(:container_class) : "container" %>">
       <a class="brand" href="/">HelpMeCo.de</a>
       <ul class="nav">
         <li class="<%= set_active? 'index', 'sites' %> "><%= link_to 'Home', root_url %></li>
@@ -73,7 +73,7 @@
   </div>
 </div>
 
-<div class="container">
+<div class="<%= content_for?(:container_class) ? yield(:container_class) : "container" %>">
 
   <% flash.each do |name, msg| %>
       <%= content_tag :div, msg, :class => "alert-message #{name}", :style=>"margin-top: 10px" %>
