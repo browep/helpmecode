@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111113211326) do
+ActiveRecord::Schema.define(:version => 20111120235521) do
 
   create_table "sites", :force => true do |t|
     t.datetime "created_at"
@@ -34,6 +34,7 @@ ActiveRecord::Schema.define(:version => 20111113211326) do
     t.string   "password_salt"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "avatar_url"
   end
 
 end

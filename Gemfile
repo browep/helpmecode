@@ -41,3 +41,4 @@ gem 'therubyracer'
 
 gem "nifty-generators", :group => :development
 gem "mocha", :group => :test
+gem "gravatar-ultimate"
