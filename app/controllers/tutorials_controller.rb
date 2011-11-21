@@ -6,7 +6,7 @@ class TutorialsController < ApplicationController
   # GET /tutorials
   # GET /tutorials.json
   def index
-    @tutorials = Tutorial.all
+    @tutorials = Tutorial.preview_with_user.all
 
     respond_to do |format|
       format.html # index.html.erb
