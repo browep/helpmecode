@@ -23,6 +23,9 @@
   <%= javascript_include_tag "bootstrap-scrollspy" %>
   <%= javascript_include_tag "bootstrap-twipsy" %>
   <%= javascript_include_tag "bootstrap-tabs" %>
+
+  <%= yield :javascript_includes %>
+
   <style type="text/css">
       body {
           padding-top: 60px;
