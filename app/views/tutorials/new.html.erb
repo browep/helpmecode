@@ -1,20 +1,6 @@
 <% title "New Tutorial" %>
 <h1>New tutorial</h1>
 
-<% content_for :javascript_includes do %>
-
-
-  <%= javascript_include_tag "jquery.wysiwyg-names-only.js" %>
-  <%= javascript_include_tag "jquery.wysiwyg.js" %>
-  <%= javascript_include_tag "wysiwyg.link.js" %>
-  <%= javascript_include_tag "wysiwyg.colorpicker.js" %>
-  <%= javascript_include_tag "wysiwyg.cssWrap.js" %>
-  <%= javascript_include_tag "default.js" %>
-  <%= stylesheet_link_tag "jquery.wysiwyg.css" %>
-  <%= stylesheet_link_tag "jquery.wysiwyg.modal.css" %>
-  <%= stylesheet_link_tag "jquery.wysiwyg.old-school    .css" %>
-
-<% end %>
 
 <fieldset><%= render 'form' %></fieldset>
 
