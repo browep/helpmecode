@@ -1,0 +1,9 @@
+development:
+  domain: localhost:3000
+  s3_bucket_main: helpmecode
+
+test:
+  domain: test.host
+
+production:
+  domain: example.com
