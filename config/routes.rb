@@ -19,6 +19,12 @@ Helpmecode::Application.routes.draw do
     end
   end
 
+  resources :upload do
+    collection do
+      post 'upload'
+    end
+  end
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
