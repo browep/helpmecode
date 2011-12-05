@@ -6,13 +6,16 @@ class UploadController < ApplicationController
 
   include AWS::S3
 
+  before_filter :is_owner, :only=>[:upload]
+
   def upload
 
 
-    if params[:tutorial_id] && params[:file] then
-      upload_path = "tutorials/#{params[:tutorial_id]}/#{params[:file].original_filename}"
+    upload_obj = params[:upload]
+    if upload_obj[:id] && upload_obj[:file] then
+      upload_path = "tutorials/#{upload_obj[:id]}/#{upload_obj[:file].original_filename}"
       S3Object.store(upload_path,
-                     params[:file].tempfile,
+                     upload_obj[:file].tempfile,
                      APP_CONFIG[:s3_bucket_main],
                      :access=>:public_read)
 
@@ -30,5 +33,14 @@ class UploadController < ApplicationController
       }
     end
 
+  end
+
+  private
+  def is_owner
+    tutorial = Tutorial.find(params[:upload][:id])
+    if !logged_in? || tutorial.user != current_user
+      Rails.logger.error "access denied for #{params[:tutorial_id]}"
+      redirect_to root_path, :notice => "You must be the owner of that tutorial to edit it."
+    end
   end
 end

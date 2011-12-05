@@ -48,15 +48,15 @@
 
     <h3>Upload Picture</h3>
   </div>
-  <form id="picture-form" enctype="multipart/form-data" action="/upload/upload" method="post">
+  <%= form_for :upload, {:url=>{:controller=>"upload",:action => "upload"},:html => {:id=>"picture-form"}} do |f| %>
     <div class="modal-body">
-      <input type="file" name="file" />
-      <input type="text" name="tutorial_id" style="display: none;" value="<%= @tutorial.id %>">
+      <%= f.file_field :file  %>
+      <%= f.hidden_field :id, :value=>@tutorial.id %>
     </div>
     <div class="modal-footer">
       <input type="submit" href="#" class="btn primary" value="Upload"/>
     </div>
-  </form>
+  <% end %>
 </div>
 
 <script type="text/javascript">
