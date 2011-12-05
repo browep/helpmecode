@@ -9,10 +9,10 @@ class UploadController < ApplicationController
   def upload
 
 
-    if params[:tutorialId] && params[:newName] then
-      upload_path = "tutorials/#{params[:tutorialId]}/#{params[:newName]}"
+    if params[:tutorial_id] && params[:file] then
+      upload_path = "tutorials/#{params[:tutorial_id]}/#{params[:file].original_filename}"
       S3Object.store(upload_path,
-                     params['handle'].tempfile,
+                     params[:file].tempfile,
                      APP_CONFIG[:s3_bucket_main],
                      :access=>:public_read)
 
@@ -21,7 +21,7 @@ class UploadController < ApplicationController
     else
       render :json => {
           'success' => false,
-          'data' => 'upload failure: need tutorialId and newName params'
+          'data' => 'upload failure: need tutorial_id and newName params'
       }
     end
 
