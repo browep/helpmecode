@@ -5,6 +5,7 @@
     <%= stylesheet_link_tag "markitup/skins/markitup/style.css" %>
     <%= stylesheet_link_tag "markitup/sets/default/style.css" %>
     <%= javascript_include_tag "bootstrap-modal" %>
+    <%= javascript_include_tag "jquery.form.js" %>
 
 <% end %>
 
@@ -37,11 +38,7 @@
     <div class="input"><%= f.submit 'Submit', :class=>"btn primary" %></div>
     </div>
 
-<script type="text/javascript">
-   $(document).ready(function() {
-      $("#markitup").markItUp(mySettings);
-   });
-</script>
+
 
 <% end %>
 
@@ -51,7 +48,7 @@
 
     <h3>Upload Picture</h3>
   </div>
-  <form enctype="multipart/form-data" action="/upload/upload" method="post">
+  <form id="picture-form" enctype="multipart/form-data" action="/upload/upload" method="post">
     <div class="modal-body">
       <input type="file" name="file" />
       <input type="text" name="tutorial_id" style="display: none;" value="<%= @tutorial.id %>">
@@ -61,3 +58,17 @@
     </div>
   </form>
 </div>
+
+<script type="text/javascript">
+   $(document).ready(function() {
+      $("#markitup").markItUp(mySettings);
+   });
+
+
+   $(document).ready(function() {
+       $('#picture-form').ajaxForm(function(data) {
+           $('#upload-modal').modal('toggle')
+           window.insertImage(data.url);
+       });
+   });
+</script>

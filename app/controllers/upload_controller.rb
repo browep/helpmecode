@@ -18,6 +18,11 @@ class UploadController < ApplicationController
 
       @img_url = "http://s3.amazonaws.com/#{APP_CONFIG[:s3_bucket_main]}/#{upload_path}"
 
+      render  :json => {
+          'success' => true,
+          'url' => @img_url
+      }
+
     else
       render :json => {
           'success' => false,
