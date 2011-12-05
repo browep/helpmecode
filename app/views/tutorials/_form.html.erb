@@ -51,10 +51,13 @@
 
     <h3>Modal Heading</h3>
   </div>
-  <form action="/s3_upload"><div class="modal-body">
-    <p>One fine body…</p>
-  </div>
-  <div class="modal-footer">
-    <a href="#" class="btn secondary">Secondary</a>
-  </div></form>
+  <form action="/s3_upload/upload">
+    <div class="modal-body">
+      <input type="file"/>
+      <input type="text" style="display: none;" value="<%= @tutorial.id %>">
+    </div>
+    <div class="modal-footer">
+      <input type="submit" href="#" class="btn primary" value="Upload"/>
+    </div>
+  </form>
 </div>
