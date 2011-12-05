@@ -1,14 +1,9 @@
 <% content_for :javascript_includes do %>
 
-    <%= javascript_include_tag "jquery.wysiwyg.js" %>
-    <%= javascript_include_tag "wysiwyg.image.js" %>
-    <%= javascript_include_tag "wysiwyg.link.js" %>
-    <%= javascript_include_tag "wysiwyg.table.js" %>
-    <%= javascript_include_tag "wysiwyg.colorpicker.js" %>
-    <%= javascript_include_tag "wysiwyg.cssWrap.js" %>
-    <%= stylesheet_link_tag "jquery.wysiwyg.css" %>
-    <%= stylesheet_link_tag "jquery.wysiwyg.modal.css" %>
-    <%= stylesheet_link_tag "jquery.wysiwyg.old-school.css" %>
+    <%= javascript_include_tag "markitup/jquery.markitup.js" %>
+    <%= javascript_include_tag "markitup/sets/default/set.js" %>
+    <%= stylesheet_link_tag "markitup/skins/markitup/style.css" %>
+    <%= stylesheet_link_tag "markitup/sets/default/style.css" %>
 
 <% end %>
 
@@ -30,7 +25,7 @@
     </div>
     <div class="clearfix">
       <%= f.label :content %>
-      <div class="input"> <%= f.text_area :content, :class=>"input-xxxlarge",:id=>"wysiwyg"%></div>
+      <div class="input"> <%= f.text_area :content, :class=>"input-xxxlarge",:id=>"markitup"%></div>
     </div>
     <div class="clearfix">
       <%= f.label :vs_address %>
@@ -42,84 +37,9 @@
     </div>
 
 <script type="text/javascript">
-(function($) {
-	$(document).ready(function() {
-		$('#wysiwyg').wysiwyg({
-		  controls: {
-			bold          : { visible : true },
-			italic        : { visible : true },
-			underline     : { visible : true },
-			strikeThrough : { visible : true },
-
-			justifyLeft   : { visible : true },
-			justifyCenter : { visible : true },
-			justifyRight  : { visible : true },
-			justifyFull   : { visible : true },
-
-			indent  : { visible : true },
-			outdent : { visible : true },
-
-			subscript   : { visible : true },
-			superscript : { visible : true },
-
-			undo : { visible : true },
-			redo : { visible : true },
-
-			insertOrderedList    : { visible : true },
-			insertUnorderedList  : { visible : true },
-			insertHorizontalRule : { visible : true },
-
-			h4: {
-				visible: true,
-				className: 'h4',
-				command: ($.browser.msie || $.browser.safari) ? 'formatBlock' : 'heading',
-				arguments: ($.browser.msie || $.browser.safari) ? '<h4>' : 'h4',
-				tags: ['h4'],
-				tooltip: 'Header 4'
-			},
-			h5: {
-				visible: true,
-				className: 'h5',
-				command: ($.browser.msie || $.browser.safari) ? 'formatBlock' : 'heading',
-				arguments: ($.browser.msie || $.browser.safari) ? '<h5>' : 'h5',
-				tags: ['h5'],
-				tooltip: 'Header 5'
-			},
-			h6: {
-				visible: true,
-				className: 'h6',
-				command: ($.browser.msie || $.browser.safari) ? 'formatBlock' : 'heading',
-				arguments: ($.browser.msie || $.browser.safari) ? '<h6>' : 'h6',
-				tags: ['h6'],
-				tooltip: 'Header 6'
-			},
-
-			cut   : { visible : true },
-			copy  : { visible : true },
-			paste : { visible : true },
-			html  : { visible: true },
-			increaseFontSize : { visible : true },
-			decreaseFontSize : { visible : true },
-			exam_html: {
-				exec: function() {
-					this.insertHtml('<abbr title="exam">Jam</abbr>');
-					return true;
-				},
-				visible: true
-			}
-		  },
-		  events: {
-			click: function(event) {
-				if ($("#click-inform:checked").length > 0) {
-					event.preventDefault();
-					alert("You have clicked jWysiwyg content!");
-				}
-			}
-		  }
-		});
-
-	});
-})(jQuery);
+   $(document).ready(function() {
+      $("#markitup").markItUp(mySettings);
+   });
 </script>
 
 <% end %>
