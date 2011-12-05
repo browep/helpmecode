@@ -445,7 +445,7 @@
             window.insertImage = insertImage;
 
             function imageDialog(){
-                alert("opening dialog");
+                $('#upload-modal').modal('toggle')
             }
 
 			// open preview window

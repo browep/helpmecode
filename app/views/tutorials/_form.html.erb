@@ -4,6 +4,7 @@
     <%= javascript_include_tag "markitup/sets/default/set.js" %>
     <%= stylesheet_link_tag "markitup/skins/markitup/style.css" %>
     <%= stylesheet_link_tag "markitup/sets/default/style.css" %>
+    <%= javascript_include_tag "bootstrap-modal" %>
 
 <% end %>
 
@@ -43,3 +44,17 @@
 </script>
 
 <% end %>
+
+<div id="upload-modal" class="modal hide fade">
+  <div class="modal-header">
+    <a href="#" class="close">&times;</a>
+
+    <h3>Modal Heading</h3>
+  </div>
+  <form action="/s3_upload"><div class="modal-body">
+    <p>One fine body…</p>
+  </div>
+  <div class="modal-footer">
+    <a href="#" class="btn secondary">Secondary</a>
+  </div></form>
+</div>
