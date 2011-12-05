@@ -385,7 +385,11 @@
 					var newSelection = document.selection.createRange();
 					newSelection.text = block;
 				} else {
-					textarea.value =  textarea.value.substring(0, caretPosition)  + block + textarea.value.substring(caretPosition + selection.length, textarea.value.length);
+                    var selection_length = 0;
+                    if(selection_length){
+                        selection_length = selection.length;
+                    }
+                    textarea.value =  textarea.value.substring(0, caretPosition)  + block + textarea.value.substring(caretPosition + selection_length, textarea.value.length);
 				}
 			}
 
@@ -433,6 +437,16 @@
 				} 
 				return selection;
 			}
+
+            function insertImage(url) {
+                insert("<img src=\""+ url + "\"/>")
+            }
+
+            window.insertImage = insertImage;
+
+            function imageDialog(){
+                alert("opening dialog");
+            }
 
 			// open preview window
 			function preview() {
@@ -590,4 +604,6 @@
 			$('textarea').trigger('insertion', [options]);
 		}
 	};
+
+
 })(jQuery);
