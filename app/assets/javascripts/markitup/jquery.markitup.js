@@ -386,7 +386,7 @@
 					newSelection.text = block;
 				} else {
                     var selection_length = 0;
-                    if(selection_length){
+                    if(selection.length){
                         selection_length = selection.length;
                     }
                     textarea.value =  textarea.value.substring(0, caretPosition)  + block + textarea.value.substring(caretPosition + selection_length, textarea.value.length);

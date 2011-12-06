@@ -35,7 +35,7 @@ var mySettings = {
         {name:'Heading 6', key:'6', openWith:'<h6(!( class="[![Class]!]")!)>', closeWith:'</h6>', placeHolder:'Your title here...' },
         {name:'Paragraph', openWith:'<p(!( class="[![Class]!]")!)>', closeWith:'</p>'  },
         {separator:'---------------' },
-        {name:'Code', key:'K', openWith:'<pre(!( class="[![Class]!]")!)>', closeWith:'</pre>', placeHolder:'CODE',className:"code-button" }
+        {name:'Code', key:'K', openWith:'<pre class="prettyprint">', closeWith:'</pre>', placeHolder:'CODE',className:"code-button" }
 
 
 

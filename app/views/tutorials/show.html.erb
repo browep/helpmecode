@@ -1,8 +1,6 @@
 <% content_for :javascript_includes do %>
-    <%= javascript_include_tag "XRegExp" %>
-    <%= stylesheet_link_tag "shCoreDefault.css" %>
-    <%= javascript_include_tag "shCore" %>
-    <%= javascript_include_tag "shCore" %>
+    <%= stylesheet_link_tag "prettify" %>
+    <%= javascript_include_tag "prettify" %>
 
 <% end %>
 
@@ -32,7 +30,9 @@
   </div>
 
   <script type="text/javascript">
-    SyntaxHighlighter.all();
+      $(document).ready(function() {
+          prettyPrint();
+      });
   </script>
 
 </div>
