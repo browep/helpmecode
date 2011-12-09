@@ -82,7 +82,7 @@ class TutorialsController < ApplicationController
     @tutorial.destroy
 
     respond_to do |format|
-      format.html { redirect_to tutorials_url }
+      format.html { redirect_to user_path(current_user), :notice => "Tutorial \"#{@tutorial.title}\" has been deleted." }
       format.json { head :ok }
     end
   end

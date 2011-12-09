@@ -1,5 +1,17 @@
 <h2><%= @user.username %></h2>
-<% @user.tutorials.each do |tutorial| %>
-    <p><%= link_to tutorial.title, tutorial_path(tutorial) %></p>
-
+<% if current_user && current_user == @user then %>
+    <h3><%= link_to "Create New Tutorial", new_tutorial_path, :class=>"btn primary" %></h3>
 <% end %>
+
+<table>
+  <% @user.tutorials.each do |tutorial| %>
+      <tr>
+        <td><%= link_to tutorial.title ? tutorial.title : "(no title)", tutorial_path(tutorial) %></td>
+        <% if is_owner?(tutorial, current_user) then %>
+            <td><%= link_to "Edit", edit_tutorial_path(tutorial) %></td>
+            <td><%= link_to 'Destroy', tutorial, confirm: 'Are you sure? There is no undo!', method: :delete %></td>
+        <% end %>
+      </tr>
+
+  <% end %>
+</table>

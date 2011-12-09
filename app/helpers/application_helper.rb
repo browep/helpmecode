@@ -7,4 +7,8 @@ module ApplicationHelper
       controller.action_name == action_name ? "active" : ""
     end
   end
+
+  def is_owner? obj, user
+    user && obj && obj.user && obj.user == user
+  end
 end
