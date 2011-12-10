@@ -11,4 +11,8 @@ module ApplicationHelper
   def is_owner? obj, user
     user && obj && obj.user && obj.user == user
   end
+
+  def display_date(input_date)
+    return input_date.strftime("%d %B %Y")
+  end
 end

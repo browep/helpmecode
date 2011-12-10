@@ -17,12 +17,13 @@
     <!-- Example row of columns -->
     <div class="row">
       <div class="span16">
-        <h2><%= @tutorial.title %></h2>
-        <div> Tags:
+        <h1><%= @tutorial.title %></h1>
+        <p><small>Last Update: <%= display_date(@tutorial.updated_at) %></small></p>
+        <p> <strong>Tags:</strong>
           <% @tutorial.tag_list.each do |tag| %>
                 <span class="label notice"><%= link_to tag, tutorials_path(:tag=>tag) %></span>
           <% end %>
-        </div>
+        </p>
 
         <div>
           <%= raw(@tutorial.content) %>
