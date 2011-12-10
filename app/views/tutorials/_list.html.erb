@@ -1,7 +1,7 @@
 <div>
   <h3>
     <%= link_to tutorial.title, tutorial_path(tutorial) %>
-    <small>by <%= link_to tutorial.username,user_path(tutorial.user_id) %></small>
+    <small>by <%= link_to tutorial.user.username,user_path(tutorial.user) %></small>
 
   </h3>
 </div>

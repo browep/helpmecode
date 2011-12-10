@@ -8,7 +8,10 @@ class TutorialsController < ApplicationController
   # GET /tutorials
   # GET /tutorials.json
   def index
-    @tutorials = Tutorial.preview_with_user.all
+
+    @tag = params[:tag]
+    query = @tag ? Tutorial.tagged_with(@tag) : Tutorial
+    @tutorials = query.all
 
     respond_to do |format|
       format.html # index.html.erb
