@@ -1,5 +1,4 @@
 class TagsController < ApplicationController
-  def search
+  #autocomplete :tag, :name
 
-  end
 end
