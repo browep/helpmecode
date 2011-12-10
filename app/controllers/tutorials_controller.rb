@@ -34,11 +34,11 @@ class TutorialsController < ApplicationController
   # GET /tutorials/new.json
   def new
     @tutorial = Tutorial.new
+    @tutorial.user = current_user
+    @tutorial.save
 
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @tutorial }
-    end
+    redirect_to edit_tutorial_path(@tutorial)
+
   end
 
   # GET /tutorials/1/edit

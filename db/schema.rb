@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111210044048) do
+ActiveRecord::Schema.define(:version => 20111210225228) do
 
   create_table "sites", :force => true do |t|
     t.datetime "created_at"
@@ -42,6 +42,7 @@ ActiveRecord::Schema.define(:version => 20111210044048) do
     t.integer  "user_id"
     t.text     "content"
     t.string   "vs_address"
+    t.boolean  "draft"
   end
 
   create_table "users", :force => true do |t|
