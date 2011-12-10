@@ -1,12 +1,17 @@
 class TutorialsController < ApplicationController
 
+  autocomplete :tag, :name, :class_name => 'ActsAsTaggableOn::Tag'
+
   before_filter :login_required, :only=>[:new,:create]
   before_filter :is_owner, :only=>[:edit,:destroy]
 
   # GET /tutorials
   # GET /tutorials.json
   def index
-    @tutorials = Tutorial.preview_with_user.all
+
+    @tag = params[:tag]
+    query = @tag ? Tutorial.tagged_with(@tag) : Tutorial
+    @tutorials = query.all
 
     respond_to do |format|
       format.html # index.html.erb

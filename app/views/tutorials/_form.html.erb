@@ -4,10 +4,6 @@
     <%= javascript_include_tag "markitup/sets/default/set.js" %>
     <%= stylesheet_link_tag "markitup/skins/markitup/style.css" %>
     <%= stylesheet_link_tag "markitup/sets/default/style.css" %>
-    <%= javascript_include_tag "bootstrap-modal" %>
-    <%= javascript_include_tag "jquery.form.js" %>
-    <%= stylesheet_link_tag "shCore" %>
-    <%= javascript_include_tag "shCore" %>
 
 
 <% end %>
@@ -36,9 +32,17 @@
       <%= f.label :vs_address %>
       <div class="input"> <%= f.text_field :vs_address, :class=>"input-xxlarge" %></div>
     </div>
+    <div class="clearfix">
+      <%= f.label :tags %>
+      <div class="input">
+        <%= f.autocomplete_field :tag_list, autocomplete_tag_name_tutorials_path, :"data-delimiter" => ', ',
+                                 :class=>"input-xxlarge"  %>
+
+      </div>
+    </div>
 
     <div class="clearfix">
-    <div class="input"><%= f.submit 'Submit', :class=>"btn primary" %></div>
+        <div class="input large-submit-buttons"><%= f.submit 'Submit', :class=>"btn primary large" %></div>
     </div>
 
 

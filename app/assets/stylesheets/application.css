@@ -13,3 +13,28 @@
 .right-of-divider {
     border-left: #EEE 1px solid
 }
+
+li.ui-menu-item {
+    list-style: none;
+}
+
+li.ui-menu-item {
+    margin: 4px 0 4px 0;
+}
+
+li.ui-menu-item > a {
+    background: #add8e6;
+    padding: 3px 3px 3px 3px;
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+
+}
+
+li.ui-menu-item > a.ui-state-hover {
+    background: #0064CD;
+    color: white;
+}
+
+.large-submit-buttons {
+    float: right;
+}

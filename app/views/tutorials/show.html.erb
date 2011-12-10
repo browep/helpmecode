@@ -18,6 +18,11 @@
     <div class="row">
       <div class="span16">
         <h2><%= @tutorial.title %></h2>
+        <div> Tags:
+          <% @tutorial.tag_list.each do |tag| %>
+                <span class="label notice"><%= link_to tag, tutorials_path(:tag=>tag) %></span>
+          <% end %>
+        </div>
 
         <div>
           <%= raw(@tutorial.content) %>
