@@ -16,11 +16,11 @@ module ApplicationHelper
     return input_date.strftime("%d %B %Y")
   end
 
-  def tutorial_path tutorial=nil, options = {}
+  def tutorial_slug tutorial=nil, options = {}
     if tutorial && tutorial.title
       "/" + Tutorial.get_slug(tutorial)
     else
-      super
+      tutorial_path tutorial, options
     end
   end
 end
