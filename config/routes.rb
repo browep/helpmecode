@@ -11,13 +11,31 @@ Helpmecode::Application.routes.draw do
 
   resources :users
 
-  resources :tutorials
+  resources :tutorials do
+    collection do
+      get 'autocomplete_tag_name'
+    end
+  end
 
   resources :sites do
     collection do
       get 'about','contact'
     end
   end
+  resources :upload do
+    collection do
+      post 'upload'
+    end
+  end
+
+  resources :tags do
+    collection do
+      get :autocomplete_name
+    end
+  end
+
+  match ":year/:month/:title" => "tutorials#show",
+      :constraints => { :year =>  /\d{4}/, :month => /\d{1,2}/ }
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

@@ -1,3 +1,13 @@
+<% content_for :javascript_includes do %>
+
+    <%= javascript_include_tag "markitup/jquery.markitup.js" %>
+    <%= javascript_include_tag "markitup/sets/default/set.js" %>
+    <%= stylesheet_link_tag "markitup/skins/markitup/style.css" %>
+    <%= stylesheet_link_tag "markitup/sets/default/style.css" %>
+
+
+<% end %>
+
 <%= form_for(@tutorial) do |f| %>
     <% if @tutorial.errors.any? %>
         <div id="error_explanation">
@@ -16,15 +26,56 @@
     </div>
     <div class="clearfix">
       <%= f.label :content %>
-      <div class="input"> <%= f.text_area :content, :class=>"input-xxlarge" %></div>
+      <div class="input"> <%= f.text_area :content, :class=>"input-xxxlarge",:id=>"markitup"%></div>
     </div>
     <div class="clearfix">
       <%= f.label :vs_address %>
       <div class="input"> <%= f.text_field :vs_address, :class=>"input-xxlarge" %></div>
     </div>
-
     <div class="clearfix">
-    <div class="input"><%= f.submit 'Submit', :class=>"btn primary" %></div>
+      <%= f.label :tags %>
+      <div class="input">
+        <%= f.autocomplete_field :tag_list, autocomplete_tag_name_tutorials_path, :"data-delimiter" => ', ',
+                                 :class=>"input-xxlarge"  %>
+
+      </div>
     </div>
 
+    <div class="clearfix">
+        <div class="input large-submit-buttons"><%= f.submit 'Submit', :class=>"btn primary large" %></div>
+    </div>
+
+
+
 <% end %>
+
+<div id="upload-modal" class="modal hide fade">
+  <div class="modal-header">
+    <a href="#" class="close">&times;</a>
+
+    <h3>Upload Picture</h3>
+  </div>
+  <%= form_for :upload, {:url=>{:controller=>"upload",:action => "upload"},:html => {:id=>"picture-form"}} do |f| %>
+    <div class="modal-body">
+      <%= f.file_field :file  %>
+      <%= f.hidden_field :id, :value=>@tutorial.id %>
+    </div>
+    <div class="modal-footer">
+      <input type="submit" href="#" class="btn primary" value="Upload"/>
+    </div>
+  <% end %>
+</div>
+
+<script type="text/javascript">
+   $(document).ready(function() {
+      $("#markitup").markItUp(mySettings);
+   });
+
+
+   $(document).ready(function() {
+       $('#picture-form').ajaxForm(function(data) {
+           $('#upload-modal').modal('toggle')
+           window.insertImage(data.url);
+       });
+   });
+</script>

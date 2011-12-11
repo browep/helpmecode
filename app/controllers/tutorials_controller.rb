@@ -1,12 +1,17 @@
 class TutorialsController < ApplicationController
 
+  autocomplete :tag, :name, :class_name => 'ActsAsTaggableOn::Tag'
+
   before_filter :login_required, :only=>[:new,:create]
   before_filter :is_owner, :only=>[:edit,:destroy]
 
   # GET /tutorials
   # GET /tutorials.json
   def index
-    @tutorials = Tutorial.all
+
+    @tag = params[:tag]
+    query = @tag ? Tutorial.tagged_with(@tag) : Tutorial
+    @tutorials = query.all
 
     respond_to do |format|
       format.html # index.html.erb
@@ -17,7 +22,11 @@ class TutorialsController < ApplicationController
   # GET /tutorials/1
   # GET /tutorials/1.json
   def show
-    @tutorial = Tutorial.find(params[:id])
+    if(params[:id])
+      @tutorial = Tutorial.find(params[:id])
+    elsif params[:year] && params[:month] && params[:title]
+      @tutorial = Tutorial.find_by_slug("#{params[:year]}/#{params[:month]}/#{params[:title]}")
+    end
 
     respond_to do |format|
       format.html # show.html.erb
@@ -29,11 +38,13 @@ class TutorialsController < ApplicationController
   # GET /tutorials/new.json
   def new
     @tutorial = Tutorial.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @tutorial }
+    @tutorial.user = current_user
+    if @tutorial.save
+      redirect_to edit_tutorial_path(@tutorial)
+    else
+      redirect_to root_url, :notice => "Error creating a new tutorial"
     end
+
   end
 
   # GET /tutorials/1/edit
@@ -66,7 +77,8 @@ class TutorialsController < ApplicationController
 
     respond_to do |format|
       if @tutorial.update_attributes(params[:tutorial])
-        format.html { redirect_to @tutorial, notice: 'Tutorial was successfully updated.' }
+        url = "/" + Tutorial.get_slug(@tutorial)
+        format.html { redirect_to(url , notice: 'Tutorial was successfully updated.' )}
         format.json { head :ok }
       else
         format.html { render action: "edit" }
@@ -82,7 +94,7 @@ class TutorialsController < ApplicationController
     @tutorial.destroy
 
     respond_to do |format|
-      format.html { redirect_to tutorials_url }
+      format.html { redirect_to user_path(current_user), :notice => "Tutorial \"#{@tutorial.title}\" has been deleted." }
       format.json { head :ok }
     end
   end

@@ -1,22 +1,19 @@
 <% title 'Tutorials' %>
-<h1>Listing tutorials</h1>
-
-<table>
-  <tr>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+<h1>Tutorials
+  <% if @tag %>
+      <small>tagged with "<%= @tag %>"</small>
+  <% end %>
+</h1>
+<h4><%= link_to "Create New Tutorial", new_tutorial_path, :class=>"btn primary" %></h4>
 
 <% @tutorials.each do |tutorial| %>
   <tr>
-    <td><%= link_to 'Show', tutorial %></td>
-    <td><%= link_to 'Edit', edit_tutorial_path(tutorial) %></td>
-    <td><%= link_to 'Destroy', tutorial, confirm: 'Are you sure?', method: :delete %></td>
+    <td>
+      <%= render :partial => "list",:locals => {:tutorial=>tutorial} %>
+    </td>
+
   </tr>
 <% end %>
 </table>
 
 <br />
-
-<%= link_to 'New Tutorial', new_tutorial_path %>

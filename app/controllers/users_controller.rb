@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_filter :login_required, :except => [:new, :create]
+  before_filter :login_required, :except => [:new, :create, :show]
 
   def new
     @user = User.new
@@ -7,9 +7,15 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(params[:user])
+
     if @user.save
+      g_api = Gravatar.new(@user.email)
+      avatar_url = g_api.image_url
+      @user.avatar_url = avatar_url
+      @user.save
+
       session[:user_id] = @user.id
-      redirect_to root_url, :notice => "Thank you for signing up! You are now logged in."
+      redirect_to tutorials_path, :notice => "Thank you for signing up! You are now logged in."
     else
       render :action => 'new'
     end
