@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111210225228) do
+ActiveRecord::Schema.define(:version => 20111211013627) do
 
   create_table "sites", :force => true do |t|
     t.datetime "created_at"
@@ -43,7 +43,10 @@ ActiveRecord::Schema.define(:version => 20111210225228) do
     t.text     "content"
     t.string   "vs_address"
     t.boolean  "draft"
+    t.string   "slug"
   end
+
+  add_index "tutorials", ["slug"], :name => "index_tutorials_on_slug", :unique => true
 
   create_table "users", :force => true do |t|
     t.string   "username"
