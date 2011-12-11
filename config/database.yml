@@ -23,6 +23,6 @@ production:
   encoding: utf8
   database: helpmecode
   username: root
-  password: my_password
+  password: 8hg313K3Zq82MmT
   host: 127.0.0.1
   port: 3306
