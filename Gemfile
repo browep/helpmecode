@@ -47,3 +47,7 @@ gem "aws-s3"
 
 gem "acts-as-taggable-on"
 gem 'rails3-jquery-autocomplete'
+
+group :production do
+  gem "mysql2"
+end
