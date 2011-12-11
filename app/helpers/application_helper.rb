@@ -15,4 +15,12 @@ module ApplicationHelper
   def display_date(input_date)
     return input_date.strftime("%d %B %Y")
   end
+
+  def tutorial_path tutorial=nil, options = {}
+    if tutorial && tutorial.title
+      "/" + Tutorial.get_slug(tutorial)
+    else
+      super
+    end
+  end
 end

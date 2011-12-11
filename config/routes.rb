@@ -34,6 +34,9 @@ Helpmecode::Application.routes.draw do
     end
   end
 
+  match ":year/:month/:title" => "tutorials#show",
+      :constraints => { :year =>  /\d{4}/, :month => /\d{1,2}/ }
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

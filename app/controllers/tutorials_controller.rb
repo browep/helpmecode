@@ -22,7 +22,11 @@ class TutorialsController < ApplicationController
   # GET /tutorials/1
   # GET /tutorials/1.json
   def show
-    @tutorial = Tutorial.find(params[:id])
+    if(params[:id])
+      @tutorial = Tutorial.find(params[:id])
+    elsif params[:year] && params[:month] && params[:title]
+      @tutorial = Tutorial.find_by_slug("#{params[:year]}/#{params[:month]}/#{params[:title]}")
+    end
 
     respond_to do |format|
       format.html # show.html.erb
@@ -35,9 +39,11 @@ class TutorialsController < ApplicationController
   def new
     @tutorial = Tutorial.new
     @tutorial.user = current_user
-    @tutorial.save
-
-    redirect_to edit_tutorial_path(@tutorial)
+    if @tutorial.save
+      redirect_to edit_tutorial_path(@tutorial)
+    else
+      redirect_to root_url, :notice => "Error creating a new tutorial"
+    end
 
   end
 
@@ -71,7 +77,8 @@ class TutorialsController < ApplicationController
 
     respond_to do |format|
       if @tutorial.update_attributes(params[:tutorial])
-        format.html { redirect_to @tutorial, notice: 'Tutorial was successfully updated.' }
+        url = "/" + Tutorial.get_slug(@tutorial)
+        format.html { redirect_to(url , notice: 'Tutorial was successfully updated.' )}
         format.json { head :ok }
       else
         format.html { render action: "edit" }
