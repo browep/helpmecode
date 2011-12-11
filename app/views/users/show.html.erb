@@ -6,7 +6,7 @@
 <table>
   <% @user.tutorials.each do |tutorial| %>
       <tr>
-        <td><%= link_to tutorial.title ? tutorial.title : "(no title)", tutorial_path(tutorial) %></td>
+        <td><%= link_to tutorial.title ? tutorial.title : "(no title)", tutorial_slug(tutorial) %></td>
         <% if is_owner?(tutorial, current_user) then %>
             <td><%= link_to "Edit", edit_tutorial_path(tutorial) %></td>
             <td><%= link_to 'Destroy', tutorial, confirm: 'Are you sure? There is no undo!', method: :delete %></td>
