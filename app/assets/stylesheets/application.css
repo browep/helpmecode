@@ -57,3 +57,12 @@ hr.top {
 .comment-controls {
     float:right;
 }
+
+.comment-meta-data > p, .comment-meta-data {
+    margin: 0 0 0 0;
+}
+
+.comment-divider {
+    margin: 5px 0 5px 0;
+}
+
