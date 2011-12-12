@@ -4,6 +4,8 @@
 
 <% end %>
 
+<% title "#{@tutorial.user.username} : #{@tutorial.title}" %>
+
 <%= container_class 'container-fluid' %>
 <div class="container-fluid">
   <div class="sidebar">
@@ -13,8 +15,6 @@
   </div>
   <div class="content">
 
-
-    <!-- Example row of columns -->
     <div class="row">
       <div class="span16">
         <h1><%= @tutorial.title %></h1>
@@ -28,9 +28,20 @@
         <div>
           <%= raw(@tutorial.content) %>
         </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="span16">
+        <h3>Comments <small>(<%= @tutorial.comments.size %>)</small></h3>
+        <% if !@tutorial.comments.empty? %><hr class="top"/><% end %>
+        <% @tutorial.comments.each do |comment| %>
+            <%= render :partial => 'comments/tutorial', :locals=>{:comment=>comment} %>
+        <% end %>
+
+        <%= render 'comments/form' %>
 
       </div>
-
 
     </div>
   </div>

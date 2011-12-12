@@ -1,5 +1,6 @@
 class Tutorial < ActiveRecord::Base
   belongs_to :user
+  has_many :comments
   acts_as_taggable
   validates_uniqueness_of :slug
   validates_presence_of :title, :on => :update
