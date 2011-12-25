@@ -10,7 +10,7 @@ class TutorialsController < ApplicationController
   def index
 
     @tag = params[:tag]
-    query = @tag ? Tutorial.tagged_with(@tag) : Tutorial
+    query = @tag ? Tutorial.published.tagged_with(@tag) : Tutorial.published
     @tutorials = query.all
 
     respond_to do |format|
