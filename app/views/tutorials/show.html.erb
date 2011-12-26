@@ -24,6 +24,11 @@
                 <span class="label notice"><%= link_to tag, tutorials_path(:tag=>tag) %></span>
           <% end %>
         </p>
+        <% if @tutorial.vs_address && !@tutorial.vs_address.empty? then %>
+            <p>
+              <h5>Find further code and implementation here: <%= link_to @tutorial.vs_address %> </h5>
+            </p>
+        <% end %>
 
         <div>
           <%= raw(@tutorial.content) %>
