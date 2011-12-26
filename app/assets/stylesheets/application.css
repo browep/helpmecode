@@ -36,5 +36,33 @@ li.ui-menu-item > a.ui-state-hover {
 }
 
 .large-submit-buttons {
-    float: right;
+    float: left;
 }
+
+
+.comment-container {
+    /*float: left;*/
+    display: block;
+}
+
+.comment-text {
+    text-align: left;
+    padding-left: 10px;
+}
+
+hr.top {
+    margin-top: 0;
+}
+
+.comment-controls {
+    float:right;
+}
+
+.comment-meta-data > p, .comment-meta-data {
+    margin: 0 0 0 0;
+}
+
+.comment-divider {
+    margin: 5px 0 5px 0;
+}
+

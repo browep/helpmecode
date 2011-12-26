@@ -1,5 +1,6 @@
 class Tutorial < ActiveRecord::Base
   belongs_to :user
+  has_many :comments
   acts_as_taggable
   validates_uniqueness_of :slug
   validates_presence_of :title, :on => :update
@@ -9,6 +10,10 @@ class Tutorial < ActiveRecord::Base
 
   def self.get_slug tutorial
      "#{tutorial.created_at.year}/#{tutorial.created_at.month}/#{tutorial.title.parameterize}"
+  end
+
+  def self.published
+    where(:draft => false)
   end
 
   private

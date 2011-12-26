@@ -6,6 +6,6 @@ test:
   domain: test.host
 
 production:
-  domain: example.com
-  s3_bucket_main: helpmecode_dev
+  domain: helpmeco.de
+  s3_bucket_main: helpmecode
 

@@ -3,14 +3,14 @@ class TutorialsController < ApplicationController
   autocomplete :tag, :name, :class_name => 'ActsAsTaggableOn::Tag'
 
   before_filter :login_required, :only=>[:new,:create]
-  before_filter :is_owner, :only=>[:edit,:destroy]
+  before_filter :is_owner, :only=>[:edit,:update,:destroy]
 
   # GET /tutorials
   # GET /tutorials.json
   def index
 
     @tag = params[:tag]
-    query = @tag ? Tutorial.tagged_with(@tag) : Tutorial
+    query = @tag ? Tutorial.published.tagged_with(@tag) : Tutorial.published
     @tutorials = query.all
 
     respond_to do |format|
@@ -27,6 +27,8 @@ class TutorialsController < ApplicationController
     elsif params[:year] && params[:month] && params[:title]
       @tutorial = Tutorial.find_by_slug("#{params[:year]}/#{params[:month]}/#{params[:title]}")
     end
+
+    @comment = Comment.new
 
     respond_to do |format|
       format.html # show.html.erb
