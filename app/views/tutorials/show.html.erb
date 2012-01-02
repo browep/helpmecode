@@ -30,7 +30,7 @@
             </p>
         <% end %>
 
-        <div>
+        <div id="tutorial-content">
           <%= raw(@tutorial.content) %>
         </div>
       </div>
@@ -53,6 +53,10 @@
 
   <script type="text/javascript">
       $(document).ready(function() {
+
+          $(".prettyprint").each(function(index){
+             $(this).text($(this).html());
+          });
           prettyPrint();
       });
   </script>
