@@ -17,7 +17,9 @@ module ApplicationHelper
   end
 
   def tutorial_slug tutorial=nil, options = {}
-    if tutorial && tutorial.title
+    if tutorial && tutorial.slug
+      "/" + tutorial.slug
+    elsif tutorial && tutorial.title
       "/" + Tutorial.get_slug(tutorial)
     else
       tutorial_path tutorial, options
