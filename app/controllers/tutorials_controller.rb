@@ -30,7 +30,7 @@ class TutorialsController < ApplicationController
       @tutorial = Tutorial.find_by_slug("#{params[:year]}/#{params[:month]}/#{params[:title]}")
     end
 
-    @tutorial.content.gsub!(/<pre.*?>(.*?)<\/pre/m) do |snippet|
+    @tutorial.content.gsub!(/<pre.*?>(.*?)<\/ ?pre/m) do |snippet|
       to_replace = $1
       @tutorial.content = @tutorial.content.gsub(to_replace,CGI::escapeHTML(to_replace))
     end
