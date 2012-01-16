@@ -86,7 +86,7 @@ class TutorialsController < ApplicationController
 
     respond_to do |format|
       if @tutorial.update_attributes(params[:tutorial])
-        url = "/" + Tutorial.get_slug(@tutorial)
+        url = "/" + Tutorial.get_or_create_slug(@tutorial)
         format.html { redirect_to(url , notice: 'Tutorial was successfully updated.' )}
         format.json { head :ok }
       else
