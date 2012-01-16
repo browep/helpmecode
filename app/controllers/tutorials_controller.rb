@@ -1,3 +1,5 @@
+require "cgi"
+
 class TutorialsController < ApplicationController
 
   autocomplete :tag, :name, :class_name => 'ActsAsTaggableOn::Tag'
@@ -26,6 +28,11 @@ class TutorialsController < ApplicationController
       @tutorial = Tutorial.find(params[:id])
     elsif params[:year] && params[:month] && params[:title]
       @tutorial = Tutorial.find_by_slug("#{params[:year]}/#{params[:month]}/#{params[:title]}")
+    end
+
+    @tutorial.content.gsub!(/<pre.*?>(.*?)<\/pre/m) do |snippet|
+      to_replace = $1
+      @tutorial.content = @tutorial.content.gsub(to_replace,CGI::escapeHTML(to_replace))
     end
 
     @comment = Comment.new
