@@ -1859,7 +1859,7 @@ footer {
   border-color: #57a957 #57a957 #3d773d;
   border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
 }
-.btn.info, .alert-message.info {
+.btn.info, .alert-message.notice {
   background-color: #339bb9;
   background-repeat: repeat-x;
   background-image: -khtml-gradient(linear, left top, left bottom, from(#5bc0de), to(#339bb9));
@@ -2036,7 +2036,7 @@ button.btn::-moz-focus-inner, input[type=submit].btn::-moz-focus-inner {
 .alert-message.danger p a,
 .alert-message.error p a,
 .alert-message.success p a,
-.alert-message.info p a {
+.alert-message.notice p a {
   color: #ffffff;
 }
 .alert-message h5 {
