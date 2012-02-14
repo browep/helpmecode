@@ -70,7 +70,7 @@ class TutorialsController < ApplicationController
 
     respond_to do |format|
       if @tutorial.save
-        format.html { redirect_to @tutorial, notice: 'Tutorial was successfully created.' }
+        format.html { redirect_to @tutorial, :flash=> {success: 'Tutorial was successfully created.'} }
         format.json { render json: @tutorial, status: :created, location: @tutorial }
       else
         format.html { render action: "new" }
@@ -87,7 +87,7 @@ class TutorialsController < ApplicationController
     respond_to do |format|
       if @tutorial.update_attributes(params[:tutorial])
         url = "/" + Tutorial.get_or_create_slug(@tutorial)
-        format.html { redirect_to(url , notice: 'Tutorial was successfully updated.' )}
+        format.html { redirect_to(url , :flash=> {success: 'Tutorial was successfully updated.' })}
         format.json { head :ok }
       else
         format.html { render action: "edit" }

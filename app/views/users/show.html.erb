@@ -14,17 +14,18 @@
 
   </tr>
   <% @user.tutorials.each do |tutorial| %>
-      <tr>
-        <td><%= link_to tutorial.title ? tutorial.title : "(no title)", tutorial_slug(tutorial) %></td>
-        <% if is_owner?(tutorial, current_user) then %>
-            <td>
-              <%= tutorial.draft ? "Draft" : "Published" %>
-
-            </td>
-            <td><%= link_to "Edit", edit_tutorial_path(tutorial) %></td>
-            <td><%= link_to 'Destroy', tutorial, confirm: 'Are you sure? There is no undo!', method: :delete %></td>
-        <% end %>
-      </tr>
+      <% if is_owner?(tutorial, current_user) || !tutorial.draft then %>
+          <tr>
+            <td><%= link_to tutorial.title ? tutorial.title : "(no title)", tutorial_slug(tutorial) %></td>
+            <% if is_owner?(tutorial, current_user) then %>
+                <td>
+                  <%= tutorial.draft ? "Draft" : "Published" %>
+                </td>
+                <td><%= link_to "Edit", edit_tutorial_path(tutorial) %></td>
+                <td><%= link_to 'Destroy', tutorial, confirm: 'Are you sure? There is no undo!', method: :delete %></td>
+            <% end %>
+          </tr>
+      <% end %>
 
   <% end %>
 </table>

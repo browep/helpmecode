@@ -81,12 +81,9 @@ class SitesController < ApplicationController
     end
   end
 
-  def about
-    #flash[:error] = "this is a test error msg"
 
-  end
-
-  def contact
+  def static
+    render :action => params[:html_file]
 
   end
 end

@@ -19,11 +19,6 @@ Helpmecode::Application.routes.draw do
     end
   end
 
-  resources :sites do
-    collection do
-      get 'about','contact'
-    end
-  end
   resources :upload do
     collection do
       post 'upload'
@@ -38,6 +33,8 @@ Helpmecode::Application.routes.draw do
 
   match ":year/:month/:title" => "tutorials#show",
       :constraints => { :year =>  /\d{4}/, :month => /\d{1,2}/ }
+
+  match "/sites/:html_file" => "sites#static"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

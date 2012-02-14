@@ -63,8 +63,8 @@
       <ul class="nav">
         <li class="<%= set_active? 'index', 'sites' %> "><%= link_to 'Home', root_url %></li>
         <li class="<%= set_active? 'index', 'tutorials' %>"><%= link_to 'Tutorials', tutorials_path %></li>
-        <li class="<%= set_active? 'about' %>"><%= link_to 'About', about_sites_url %></li>
-        <li class="<%= set_active? 'contact' %>"><%= link_to 'Contact', contact_sites_url %></li>
+        <li class="<%= set_active? 'about' %>"><%= link_to 'About', "/sites/about" %></li>
+        <li class="<%= set_active? 'contact' %>"><%= link_to 'Contact', "/sites/contact" %></li>
       </ul>
       <ul class="nav secondary-nav">
         <% if logged_in? then %>
