@@ -12,6 +12,10 @@ class Tutorial < ActiveRecord::Base
      "#{tutorial.created_at.year}/#{tutorial.created_at.month}/#{tutorial.title.parameterize}"
   end
 
+  def self.get_or_create_slug tutorial
+    tutorial.slug ? tutorial.slug : get_slug(tutorial)
+  end
+
   def self.published
     where(:draft => false)
   end
