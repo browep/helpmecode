@@ -16,7 +16,7 @@
   <div class="content">
 
     <div class="row">
-      <div class="span16">
+      <div class="span13">
         <h1><%= @tutorial.title %></h1>
         <p><small>Last Update: <%= display_date(@tutorial.updated_at) %></small></p>
         <p> <strong>Tags:</strong>
@@ -33,6 +33,9 @@
         <div id="tutorial-content">
           <%= raw(@tutorial.content) %>
         </div>
+      </div>
+      <div class="span3">
+        <%= render 'sites/skyscraper_ad' %>
       </div>
     </div>
 
