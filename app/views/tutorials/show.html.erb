@@ -16,7 +16,7 @@
   <div class="content">
 
     <div class="row">
-      <div class="span16">
+      <div class="span13">
         <h1><%= @tutorial.title %></h1>
         <p><small>Last Update: <%= display_date(@tutorial.updated_at) %></small></p>
         <p> <strong>Tags:</strong>
@@ -26,13 +26,16 @@
         </p>
         <% if @tutorial.vs_address && !@tutorial.vs_address.empty? then %>
             <p>
-              <h5>Find further code and implementation here: <%= link_to @tutorial.vs_address %> </h5>
+              <h5>Find further code and implementation here: <%= link_to @tutorial.vs_address, @tutorial.vs_address %> </h5>
             </p>
         <% end %>
 
         <div id="tutorial-content">
           <%= raw(@tutorial.content) %>
         </div>
+      </div>
+      <div class="span3">
+        <%= render 'sites/skyscraper_ad' %>
       </div>
     </div>
 
