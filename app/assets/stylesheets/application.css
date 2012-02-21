@@ -67,3 +67,6 @@ hr.top {
     margin: 5px 0 5px 0;
 }
 
+.user-tutorial-count, .user-sidebar-name  {
+    line-height: normal;
+}
