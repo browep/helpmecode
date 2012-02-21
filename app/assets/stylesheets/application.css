@@ -43,6 +43,7 @@ li.ui-menu-item > a.ui-state-hover {
 .comment-container {
     /*float: left;*/
     display: block;
+    margin-top: 20px;
 }
 
 .comment-text {

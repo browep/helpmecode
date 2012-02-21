@@ -39,8 +39,8 @@
       </div>
     </div>
 
-    <div class="row">
-      <div class="span16">
+    <div class="row comment-container">
+      <div class="span13">
         <h3>Comments <small>(<%= @tutorial.comments.size %>)</small></h3>
         <% if !@tutorial.comments.empty? %><hr class="top"/><% end %>
         <% @tutorial.comments.each do |comment| %>
