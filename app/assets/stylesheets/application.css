@@ -43,6 +43,7 @@ li.ui-menu-item > a.ui-state-hover {
 .comment-container {
     /*float: left;*/
     display: block;
+    margin-top: 20px;
 }
 
 .comment-text {
@@ -66,3 +67,6 @@ hr.top {
     margin: 5px 0 5px 0;
 }
 
+.user-tutorial-count, .user-sidebar-name  {
+    line-height: normal;
+}

@@ -16,6 +16,10 @@ module ApplicationHelper
     return input_date.strftime("%d %B %Y")
   end
 
+  def display_date_short(input_date)
+    input_date.strftime("%d/%b/%Y")
+  end
+
   def tutorial_slug tutorial=nil, options = {}
     if tutorial && tutorial.slug
       "/" + tutorial.slug
