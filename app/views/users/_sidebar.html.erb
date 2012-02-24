@@ -1,2 +1,4 @@
 <p><%= image_tag user.avatar_url %></p>
-<h3><%= link_to user.username, user_path(user) %></h3>
+<h3 class="user-sidebar-name"><%= link_to user.username, user_path(user) %></h3>
+<h4 class="user-tutorial-count"><small><%= link_to "#{user.tutorials.count} tutorials", user_path(user) %></small></h4>
+<h4 class="user-tutorial-count"><small>Member since: <%= display_date_short(user.created_at) %></small></h4>
