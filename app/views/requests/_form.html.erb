@@ -1,0 +1,48 @@
+
+
+<%= form_for(@request) do |f| %>
+    <% if @request.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@request.errors.count, "error") %> prohibited this request from being saved:</h2>
+
+          <ul>
+            <% @request.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+
+    <h3 class="label-explanation">
+        Tell us what you are looking for.  Is there a component, system or framework you would like some more
+          in-depth knowledge of?  Maybe there is a stackoveflow question that you want more clarity of, include the
+          link!  The more specific the request the better the tutorial.
+      </h3>
+
+    <br />
+    <br />
+
+    <div class="clearfix">
+
+      <%= f.label 'Your Request'%>
+      <div class="input"> <%= f.text_area :text, :class=>"input-xxlarge", :rows=>"10" %></div>
+    </div>
+
+    <div class="clearfix">
+      <h5 class="input">
+        <small>Tag your request so it is easier to find by the right people.  Comma separate each tag.
+        </small>
+      </h5>
+      <%= f.label :tags %>
+      <div class="input">
+        <%= f.autocomplete_field :tag_list, autocomplete_tag_name_tutorials_path, :"data-delimiter" => ', ',
+                                 :class=>"input-xxlarge"  %>
+
+      </div>
+    </div>
+
+    <div class="clearfix">
+      <div class="input large-submit-buttons"><%= f.submit 'Submit', :class=>"btn primary" %></div>
+    </div>
+<% end %>
+

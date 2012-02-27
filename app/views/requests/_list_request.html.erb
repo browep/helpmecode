@@ -1,0 +1,7 @@
+<p>
+  On <%= display_date(this.created_at) %>, <strong><%= link_to this.user.username, user_path(this.user) %> </strong>requested:
+  "<%= this.text %>"
+  <% this.tag_list.each do |tag| %>
+      <span class="label notice"><%= link_to tag, tutorials_path(:tag=>tag) %></span>
+  <% end %>
+</p>

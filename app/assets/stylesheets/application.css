@@ -70,3 +70,11 @@ hr.top {
 .user-tutorial-count, .user-sidebar-name  {
     line-height: normal;
 }
+
+.possibly-undersize {
+    min-height: 200px;
+}
+
+.label-explanation {
+    line-height: 1.2em;
+}
