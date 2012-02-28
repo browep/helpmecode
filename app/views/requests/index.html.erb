@@ -1,0 +1,5 @@
+<% title "Requests" %>
+
+<h4><%= link_to "Create a new Request", new_request_path, :class=>"btn primary" %></h4>
+
+<%= render :partial => 'requests/list_request', :collection=>@requests, :as=>:this %>

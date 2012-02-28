@@ -1,4 +1,6 @@
 Helpmecode::Application.routes.draw do
+  resources :requests
+
   resources :comments
 
   match 'user/edit' => 'users#edit', :as => :edit_current_user
