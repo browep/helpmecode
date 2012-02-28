@@ -1,0 +1,26 @@
+<% title "Request from #{@request.user.username}" %>
+
+<%= container_class 'container-fluid' %>
+<div class="container-fluid">
+  <div class="sidebar">
+    <div class="well">
+      <%= render :partial=>"users/sidebar",:locals=>{:user=>@request.user} %>
+    </div>
+  </div>
+  <div class="content possibly-undersize">
+
+    <div class="row">
+      <div class="span13">
+        <h1>Request:</h1>
+        <p><small>On: <%= display_date(@request.created_at) %></small></p>
+
+        <%= raw(@request.text) %>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+

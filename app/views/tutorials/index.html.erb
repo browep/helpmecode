@@ -4,7 +4,7 @@
       <small>tagged with "<%= @tag %>"</small>
   <% end %>
 </h1>
-<h4><%= link_to "Create New Tutorial", new_tutorial_path, :class=>"btn primary" %></h4>
+<h4><%= link_to "Create New Tutorial", new_tutorial_path, :class=>"btn primary" %> Can't find a tutorial?  Request one: <%= link_to "Request", new_request_path, :class=>"btn primary" %> </h4>
 
 <% @tutorials.each do |tutorial| %>
   <tr>
