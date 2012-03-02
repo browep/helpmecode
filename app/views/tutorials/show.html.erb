@@ -36,6 +36,13 @@
 
     <div class="row">
       <div class="span13">
+        <% if @tutorial.draft? then %>
+            <div class="alert-message warning" style="margin-top: 10px">
+              This tutorial is in draft mode and not yet viewable to the open web.
+              <%= link_to 'Click here to edit', edit_tutorial_path(@tutorial) %>.
+              Change the status to 'published' in order for others to see it.</div>
+        <% end %>
+
         <h1><%= @tutorial.title %></h1>
         <p><small>Last Update: <%= display_date(@tutorial.updated_at) %></small></p>
         <p> <strong>Tags:</strong>
