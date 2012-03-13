@@ -29,4 +29,13 @@ module ApplicationHelper
       tutorial_path tutorial, options
     end
   end
+
+  def auth_url(provider)
+    "/auth/open_id#{{:openid_url=>provider}.to_query_string}"
+  end
+
+  def auth_link provider
+    link_to provider, auth_url(provider)
+  end
+
 end

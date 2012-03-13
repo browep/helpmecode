@@ -13,7 +13,11 @@ Helpmecode::Application.routes.draw do
 
   resources :sessions
 
-  resources :users
+  resources :users do
+    collection do
+      get 'auth_create'
+    end
+  end
 
   resources :tutorials do
     collection do
@@ -37,6 +41,10 @@ Helpmecode::Application.routes.draw do
       :constraints => { :year =>  /\d{4}/, :month => /\d{1,2}/ }
 
   match "/sites/:html_file" => "sites#static"
+
+
+  match "/auth/:provider/callback" => "users#auth_callback"
+
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

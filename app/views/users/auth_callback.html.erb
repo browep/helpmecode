@@ -1,0 +1,26 @@
+<% "Create your Account" %>
+
+<div class="clearfix">Welcome, <%= session[:user_fullname] %>. Let's create a new account.</div>
+
+
+<div class="clearfix">
+  Here's a proposed username for you. Change it to your liking.
+</div>
+
+<%= form_tag "/users" do %>
+    <br/>
+    <label>Proposed Username</label>
+
+
+
+    <div class="clearfix">
+      <div class="input"><%= text_field :user, :username, :value=>@proposed_username %></div>
+    </div>
+
+
+    <div class="clearfix">
+      <div class="input"><%= submit_tag("Create a Account", :class=>"btn primary") %></div>
+    </div>
+<% end %>
+
+

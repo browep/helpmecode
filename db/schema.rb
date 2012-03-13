@@ -11,12 +11,20 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120226215103) do
+ActiveRecord::Schema.define(:version => 20120302040451) do
 
   create_table "comments", :force => true do |t|
     t.integer  "user_id"
     t.integer  "tutorial_id"
     t.text     "text"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "profiles", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "full_name"
+    t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -66,11 +74,13 @@ ActiveRecord::Schema.define(:version => 20120226215103) do
   create_table "users", :force => true do |t|
     t.string   "username"
     t.string   "email"
-    t.string   "password_hash"
-    t.string   "password_salt"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "avatar_url"
+    t.string   "third_party_uid"
+    t.string   "third_party_provider"
   end
+
+  add_index "users", ["third_party_uid"], :name => "index_users_on_third_party_uid"
 
 end
