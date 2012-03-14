@@ -1,7 +1,7 @@
 require 'util'
 
 class UsersController < ApplicationController
-  before_filter :login_required, :except => [:new, :create, :show, :auth_callback]
+  before_filter :login_required, :except => [:new, :create, :show, :auth_callback, :checkname]
 
   def new
     @user = User.new
@@ -77,6 +77,15 @@ class UsersController < ApplicationController
       session[:user_fullname] = user_fullname
       @proposed_username = Util.email_to_proposed_username user_email
     end
+  end
+
+  def checkname
+    if User.where('username = ?', params[:user]).count == 0
+      render :nothing => true, :status => 200
+    else
+      render :nothing => true, :status => 409
+    end
+    return
   end
 
 end

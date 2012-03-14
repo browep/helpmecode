@@ -16,6 +16,8 @@ Helpmecode::Application.routes.draw do
   resources :users do
     collection do
       get 'auth_create'
+      get 'checkname'
+
     end
   end
 

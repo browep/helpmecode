@@ -98,3 +98,12 @@ hr.top {
 .openid-provider-logo.left {
     float: right;
 }
+
+#label-ok {
+    color: green;
+    font-weight: bold;
+}
+#label-error {
+    color: red;
+    font-weight: bold;
+}

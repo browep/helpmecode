@@ -14,13 +14,45 @@
 
 
     <div class="clearfix">
-      <div class="input"><%= text_field :user, :username, :value=>@proposed_username %></div>
+      <div class="input">
+        <%= text_field :user, :username, :value=>@proposed_username, :'data-validate' => '/users/checkname' %>
+        <span id="label-ok" style="display: none;">Username Available</span>
+        <span id="label-error" style="display: none;">Username Unavailable</span>
+      </div>
     </div>
 
 
     <div class="clearfix">
-      <div class="input"><%= submit_tag("Create a Account", :class=>"btn primary") %></div>
+      <div class="input"><%= submit_tag("Create a Account", :class=>"btn primary",:id=>"submit-btn") %></div>
     </div>
 <% end %>
+
+
+<script type="text/javascript">
+    $(function() {
+        var checkUserNameFunc = function() {
+            $this = $(this);
+            $.get($this.data('validate'), {
+                user: $this.val()
+            }).success(
+                    function() {
+                        $('#label-ok').show();
+                        $('#label-error').hide();
+                        $('#submit-btn').removeClass('disabled');
+                         $("input[type=submit]").removeAttr("disabled");
+                    }).error(function() {
+                        $('#label-error').show();
+                        $('#label-ok').hide();
+                        $('#submit-btn').addClass('disabled');
+                          $("input[type=submit]").attr("disabled", "disabled");
+                    });
+        };
+        $('[data-validate]').keyup(checkUserNameFunc);
+        $('[data-validate]').change(checkUserNameFunc);
+
+        checkUserNameFunc.apply($('[data-validate]'));
+
+    });
+</script>
 
 
