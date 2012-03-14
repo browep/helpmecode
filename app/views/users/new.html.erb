@@ -1,31 +1,42 @@
 <% title "Sign up" %>
 
 
+<h1>Login with one of these Open ID providers</h1>
+
 <div class="row">
-  <div  class="span-one-half">
-    <%= form_tag sessions_path do %>
-        <fieldset>
-          <legend>Login</legend>
-
-          <div class="clearfix">
-            <%= label_tag :login, "Username or Email" %>
-            <div class="input"><%= text_field_tag :login, params[:login] %></div>
-          </div>
-
-          <div class="clearfix">
-
-            <%= label_tag :password %>
-            <div class="input"><%= password_field_tag :password %></div>
-          </div>
-
-          <div class="clearfix"><div class="input"><%= submit_tag "Log in",:class=>"btn primary" %></div></div>
-        </fieldset>
-    <% end %>
-
+  <div class="span16">Open ID allows you to not have to remember another
+    password and we don't
+    have to verify your email. If you don't have an account with one of these providers you can sign up for free with
+    any
+    of them.
   </div>
-  <div  class="span-one-half  right-of-divider">
 
-    <%= render 'form' %>
+</div>
 
+<div class="row">
+  <div class="span-one-half">
+    <a href="<%= auth_url("https://www.google.com/accounts/o8/id") %>">
+      <%= image_tag '/images/google_logo.jpg', :class=>"openid-provider-logo left" %>
+    </a>
+  </div>
+  <div class="span-one-half">
+    <a href="<%= auth_url("yahoo.com") %>">
+      <%= image_tag '/images/yahoo_logo.png', :class=>"openid-provider-logo right" %>
+    </a>
+  </div>
+
+</div>
+
+
+<div class="row">
+  <div class="span-one-half">
+    <a href="/auth/windowslive">
+      <%= image_tag '/images/winlive.jpg', :class=>"openid-provider-logo left" %>
+    </a>
+  </div>
+  <div class="span-one-half">
+    <a href="/auth/facebook">
+      <%= image_tag '/images/facebook_logo.jpg', :class=>"openid-provider-logo right" %>
+    </a>
   </div>
 </div>

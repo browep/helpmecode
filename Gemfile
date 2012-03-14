@@ -52,3 +52,11 @@ gem 'rails3-jquery-autocomplete'
 group :production do
   gem "mysql2"
 end
+
+gem 'omniauth-github', :git => 'git://github.com/intridea/omniauth-github.git'
+gem 'omniauth-openid', :git => 'git://github.com/intridea/omniauth-openid.git'
+gem 'omniauth-windowslive', :git => 'git://github.com/joel/omniauth-windowslive.git'
+
+gem 'mongrel'
+
+gem 'omniauth-facebook'

@@ -78,3 +78,32 @@ hr.top {
 .label-explanation {
     line-height: 1.2em;
 }
+
+.share-button-container {
+    /*margin: 0px auto;*/
+    text-align: center;
+    margin-bottom: 0;
+}
+
+.openid-provider-logo {
+    width: 256px;
+    display: block;
+    margin: 10px 0 10px 0;
+    border: #C0C0C0 solid thin;
+}
+
+.openid-provider-logo.right {
+    float: left;
+}
+.openid-provider-logo.left {
+    float: right;
+}
+
+#label-ok {
+    color: green;
+    font-weight: bold;
+}
+#label-error {
+    color: red;
+    font-weight: bold;
+}
