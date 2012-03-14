@@ -12,11 +12,37 @@
     <div class="well">
       <%= render :partial=>"users/sidebar",:locals=>{:user=>@tutorial.user} %>
     </div>
+    <div class="well">
+      <p class="share-button-container">
+
+        <a href="https://plus.google.com/share" title="Share this tutorial on Google Plus"
+           onclick="window.open('https://plus.google.com/share?hl=en&url=' + window.location.href,'gplusshare','width=450,height=300,left='+(screen.availWidth/2-225)+',top='+(screen.availHeight/2-150)+'');return false;">
+          <%= image_tag "/images/gplus.png" %>
+        </a>
+
+        <a href="https://www.facebook.com/sharer.php"  title="Share this tutorial on Facebook"
+           onclick="window.open('https://www.facebook.com/sharer.php?u='+window.location.href+'&t=<%= escape_once @tutorial.title %>','fbshare','width=500,height=400,left='+(screen.availWidth/2-225)+',top='+(screen.availHeight/2-150)+'');return false;">
+          <%= image_tag "/images/facebook.png" %>
+        </a>
+
+        <a href="http://twitter.com/intent/tweet" title="Share this tutorial on Twitter"
+           onclick="window.open('http://twitter.com/intent/tweet?source=sharethiscom&text=Check%20out%20%22<%= escape_once @tutorial.title %>%22%3A%20'+escape(window.location.href),'tweet','width=500,height=400,left='+(screen.availWidth/2-225)+',top='+(screen.availHeight/2-150)+'');return false;">
+          <%= image_tag "/images/twitter.png" %>
+        </a>
+      </p>
+    </div>
   </div>
   <div class="content">
 
     <div class="row">
       <div class="span13">
+        <% if @tutorial.draft? then %>
+            <div class="alert-message warning" style="margin-top: 10px">
+              This tutorial is in draft mode and not yet viewable to the open web.
+              <%= link_to 'Click here to edit', edit_tutorial_path(@tutorial) %>.
+              Change the status to 'published' in order for others to see it.</div>
+        <% end %>
+
         <h1><%= @tutorial.title %></h1>
         <p><small>Last Update: <%= display_date(@tutorial.updated_at) %></small></p>
         <p> <strong>Tags:</strong>
