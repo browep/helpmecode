@@ -60,3 +60,5 @@ gem 'omniauth-windowslive', :git => 'git://github.com/joel/omniauth-windowslive.
 gem 'mongrel'
 
 gem 'omniauth-facebook'
+
+gem "aws-ses", "~> 0.4.4"
