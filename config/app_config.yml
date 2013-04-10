@@ -1,6 +1,7 @@
 development:
   domain: localhost:3000
   s3_bucket_main: helpmecode_dev
+  system_notification_email: no-reply@helpmeco.de
 
 test:
   domain: test.host
