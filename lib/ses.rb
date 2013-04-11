@@ -1,3 +1,5 @@
+require 'aws/ses'
+
 class SES
   def initialize
     @ses = AWS::SES::Base.new(
