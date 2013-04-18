@@ -6,9 +6,6 @@
 
 <% title "#{@tutorial.user.username} : #{@tutorial.title}" %>
 
-<% content_for :meta_keywords , "tutorial, " + @tutorial.tag_list.join(", ") %>
-<% content_for :meta_description , "#{@tutorial.tag_list.join(", ")} : #{(@tutorial.content.gsub!(/(<[^>]*>)|\n|\t/s) { " " })[0,300]}" %>
-
 <%= container_class 'container-fluid' %>
 <div class="container-fluid">
   <div class="sidebar">
