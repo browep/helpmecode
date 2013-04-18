@@ -107,3 +107,8 @@ hr.top {
     color: red;
     font-weight: bold;
 }
+
+#tutorial-content > a {
+    color: #0069d6;
+    text-decoration: underline;
+}
