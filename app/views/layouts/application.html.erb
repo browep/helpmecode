@@ -5,7 +5,9 @@
   <meta charset="utf-8">
   <title>HelpmeCo.de | <%= content_for?(:title) ? yield(:title) : "" %></title>
 
-  <meta name="description" content="">
+  <meta name="keywords" content="<%= content_for :meta_keywords %>">
+  <meta name="description" content="<%= content_for :meta_description %>">
+
   <meta name="author" content="">
 
   <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
